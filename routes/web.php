@@ -19,3 +19,9 @@ Route :: post('/livre/create',[livreController::class,'store'])->name('livre.sto
 Route :: get('/livre/edit/{livre}',[livreController::class,'edit'])->name('livres.edit');
 
 Route::put('/livre/update/{livre}',[livreController::class,'update'])->name('livre.update');
+
+Route :: get('/etudiant',function(){
+    return view('Etudiant.index');
+});
+
+//Route::get('/etudiant',[EtudiantController::class,index])->name('ListeEtudiant');
