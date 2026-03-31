@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\EtudiantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\livreController;
 Route::get('/', function () {
@@ -20,8 +20,4 @@ Route :: get('/livre/edit/{livre}',[livreController::class,'edit'])->name('livre
 
 Route::put('/livre/update/{livre}',[livreController::class,'update'])->name('livre.update');
 
-Route :: get('/etudiant',function(){
-    return view('Etudiant.index');
-});
-
-//Route::get('/etudiant',[EtudiantController::class,index])->name('ListeEtudiant');
+Route::get('/etudiant',[EtudiantController::class,'index'])->name('ListeEtudiant');
