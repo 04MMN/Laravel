@@ -30,7 +30,7 @@
               <span>Etudiants</span>
               </a>
             <ul class="sub">
-              <li><a href="general.html">Listes</a></li>
+              <li><a href="{{ route('ListeEtudiant') }}">Listes</a></li>
               <li><a href="buttons.html">Nouveau</a></li>
 
 
