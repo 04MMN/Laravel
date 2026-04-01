@@ -31,7 +31,7 @@
               </a>
             <ul class="sub">
               <li><a href="{{ route('ListeEtudiant') }}">Listes</a></li>
-              <li><a href="buttons.html">Nouveau</a></li>
+              <li><a href="{{ route('etudiant.create') }}">Nouveau</a></li>
 
 
             </ul>

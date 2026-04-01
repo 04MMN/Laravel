@@ -12,7 +12,7 @@ class EtudiantController extends Controller
     public function index()
     {
         //
-        $tab_etudiant= Etudiant::paginate(1);
+        $tab_etudiant= Etudiant::paginate(5);
         return view('Etudiant.index',compact('tab_etudiant'));
     }
 
@@ -22,6 +22,7 @@ class EtudiantController extends Controller
     public function create()
     {
         //
+        return view('Etudiant.create');
     }
 
     /**
@@ -30,6 +31,14 @@ class EtudiantController extends Controller
     public function store(Request $request)
     {
         //
+        $validform = $request -> validate([
+            'nom'=>'required |string |max:255',
+            'prenom'=>'required|string|max:200',
+            'age'=>'required|numeric|max:255|unique:etudiant,age',
+            'adress'=>'required|string|min:0'
+        ] , ['age.unique'=>'veuiller changer de numero car cela existe !']);
+        etudiant :: create($validform);
+        return  redirect()->route('ListeEtudiant')->with('success','Livre ajoute avec succes!!');
     }
 
     /**
@@ -43,9 +52,11 @@ class EtudiantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         //
+        $etudiant = Etudiant::find($id);
+        return view('Etudiant.edit',compact('etudiant'));
     }
 
     /**
@@ -54,6 +65,14 @@ class EtudiantController extends Controller
     public function update(Request $request, string $id)
     {
         //
+         $reqvalid= $request->validate([
+            'nom'=>'required |string |max:255',
+            'prenom'=>'required|string|max:200',
+            'age'=>'required|numeric|min:0'
+        ]);
+
+        $livre->update($reqvalid);
+        return  redirect()->route('ListeEtudiant');
     }
 
     /**
