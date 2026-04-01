@@ -34,19 +34,19 @@ class EtudiantController extends Controller
         $validform = $request -> validate([
             'nom'=>'required |string |max:255',
             'prenom'=>'required|string|max:200',
-            'age'=>'required|numeric|max:255|unique:etudiant,age',
+            'age'=>'required|numeric|max:255|unique:etudiants,age',
             'adress'=>'required|string|min:0'
         ] , ['age.unique'=>'veuiller changer de numero car cela existe !']);
-        etudiant :: create($validform);
+        Etudiant :: create($validform);
         return  redirect()->route('ListeEtudiant')->with('success','Livre ajoute avec succes!!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Etudiant $Etudiant)
     {
-        //
+        return view('Etudiant.show',compact('Etudiant'));
     }
 
     /**
@@ -55,14 +55,14 @@ class EtudiantController extends Controller
     public function edit( $id)
     {
         //
-        $etudiant = Etudiant::find($id);
-        return view('Etudiant.edit',compact('etudiant'));
+        $Etudiant = Etudiant::find($id);
+        return view('Etudiant.edit',compact('Etudiant'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Etudiant $Etudiant)
     {
         //
          $reqvalid= $request->validate([
@@ -71,15 +71,16 @@ class EtudiantController extends Controller
             'age'=>'required|numeric|min:0'
         ]);
 
-        $livre->update($reqvalid);
+        $Etudiant->update($reqvalid);
         return  redirect()->route('ListeEtudiant');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Etudiant $Etudiant)
     {
-        //
+        $Etudiant->delete();
+        return redirect()->route('ListeEtudiant');
     }
 }

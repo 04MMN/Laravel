@@ -31,10 +31,15 @@
                     <td>{{$Etudiant->age }} </td>
                     <td><span class="label label-info label-mini">{{$Etudiant->adress}}</span></td>
                     <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                              <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href="{{ route('etudiant.show',$Etudiant->id) }}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                     <a href="{{ route('etudiant.edit', $Etudiant->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
 
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                      <form action="{{ route('etudiant.destroy',$Etudiant->id) }}" method="POST" onsubmit="return confirm('voulez vous confirmez')">
+                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                        @csrf
+                        @method('DELETE')
+
+                      </form>
                     </td>
                   </tr>
                      @endforeach
