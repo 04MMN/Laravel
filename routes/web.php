@@ -21,3 +21,7 @@ Route :: get('/livre/edit/{livre}',[livreController::class,'edit'])->name('livre
 Route::put('/livre/update/{livre}',[livreController::class,'update'])->name('livre.update');
 
 Route::get('/etudiant',[EtudiantController::class,'index'])->name('ListeEtudiant');
+
+Route::get('livre/show/{livre}',[livreController::class,'show'])->name('livre.show');
+
+Route::delete('livre/delete/{id}',[livreController::class,'destroy'])->name('livre.destroy');

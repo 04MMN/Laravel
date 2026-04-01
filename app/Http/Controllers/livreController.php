@@ -49,7 +49,8 @@ class livreController extends Controller
      */
     public function show(livre $livre)
     {
-        //
+        // $livre =livre::find($id);
+        return view('livres.show',compact('livre'));
     }
 
     /**
@@ -83,6 +84,8 @@ class livreController extends Controller
      */
     public function destroy(livre $livre)
     {
-        //
+
+        $livre->delete();
+        return redirect()->route('Listelivre');
     }
 }

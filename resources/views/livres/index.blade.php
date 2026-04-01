@@ -31,9 +31,15 @@
                     <td>{{$livre->num_livre }} </td>
                     <td><span class="label label-info label-mini">{{$livre->quantite}}</span></td>
                     <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                      <a href="{{ route('livre.show',$livre->id) }}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                       <a href="{{ route('livres.edit', $livre->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                      <form action="{{ route('livre.destroy',$livre->id) }}" method="POST" onsubmit="return confirm('voulez vous confirmez')">
+                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                        @csrf
+                        @method('DELETE')
+
+                      </form>
+
                     </td>
                   </tr>
                      @endforeach
