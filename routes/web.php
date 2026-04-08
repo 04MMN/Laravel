@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\EmpruntController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\livreController;
 Route::get('/', function () {
@@ -37,3 +38,5 @@ Route::put('/etudiant/update/{etudiant}',[EtudiantController::class,'update'])->
 Route::get('etudiant/show/{etudiant}',[EtudiantController::class,'show'])->name('etudiant.show');
 
 Route::delete('etudiant/delete/{etudiant}',[EtudiantController::class,'destroy'])->name('etudiant.destroy');
+
+Route::resource('emprunts',EmpruntController::class);

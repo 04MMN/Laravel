@@ -12,4 +12,8 @@ class Etudiant extends Model
         'age',
         'adress'
     ];
+
+    public function emprunts(){
+        return $this->hasMany(Emprunt::class,'etudiant_id');
+    }
 }

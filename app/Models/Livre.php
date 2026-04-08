@@ -12,4 +12,7 @@ class Livre extends Model
         'num_livre',
         'quantite'
     ];
+    public function emprunts(){
+        return $this->hasMany(Emprunt::class,'livre_id');
+    }
 }
