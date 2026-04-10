@@ -3,9 +3,10 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\EmpruntController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\livreController;
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\LoginController;
+//Route::get('/', function () {
+  //  return view('welcome');
+//});
 Route :: get('/dashboard', function(){
 
     return view('dashboard');
@@ -42,3 +43,7 @@ Route::delete('etudiant/delete/{etudiant}',[EtudiantController::class,'destroy']
 Route::resource('emprunts',EmpruntController::class);
 
 Route::put('emprunt/retour/{emprunt}',[EmpruntController::class,'retourlivre'])->name('retourlivre');
+
+Route::get('/',[LoginController::class,'login']);
+
+Route::post('/gererlogin',[LoginController::class, 'gererlogin'])->name('gererlogin');
