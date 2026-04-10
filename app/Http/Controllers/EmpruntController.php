@@ -38,8 +38,29 @@ class EmpruntController extends Controller
      */
     public function store(Request $request)
     {
-        $livre=Livre::find($request->livre_id);
-        dd($request->all());
+        //dd($request->all());
+       $validform = $request->validate([
+    'livre_id'    => 'required|numeric',
+    'Etudiant_id'=>'required',
+    'date_retour'    => 'required|date|after_or_equal:date_emprunt',
+    'date_emprunt' => 'required|date'
+]);
+
+// Récupérer le livre concerné
+$livre = Livre::findOrFail($request->livre_id);
+
+// Vérifier si la quantité est suffisante
+if ($livre->quantite <= 0) {
+    return redirect()->back()->with('error', 'Stock épuisé, emprunt impossible !');
+}
+
+// Diminuer la quantité
+$livre->quantite -= 1;
+$livre->save();
+
+Emprunt::create($validform);
+
+return redirect()->route('emprunts.index')->with('success', 'Emprunt ajouté avec succès !');
     }
 
     /**
@@ -48,6 +69,7 @@ class EmpruntController extends Controller
     public function show(Emprunt $emprunt)
     {
         //
+        return view('Emprunts.show',compact('emprunt'));
     }
 
     /**
@@ -72,5 +94,13 @@ class EmpruntController extends Controller
     public function destroy(Emprunt $emprunt)
     {
         //
+    }
+
+    public function retourlivre(Emprunt $emprunt){
+       // dd($emprunt);
+        $livre=Livre::find($emprunt->livre_id);
+        $livre->increment('quantite');
+        $emprunt->update(['rendu'=>true]);
+        return redirect()->route('emprunts.show',$emprunt->id)->with('livre rendu');
     }
 }

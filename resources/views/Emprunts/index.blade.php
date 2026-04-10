@@ -17,6 +17,7 @@
                     <th><i class="fa fa-bookmark"></i> date emprunt</th>
                     <th><i class=" fa fa-edit"></i>date retour</th>
                     <th><i class=" fa fa-edit"></i>rendu</th>
+                    <th><i class=" fa fa-edit"></i>Action</th>
 
                   </tr>
                 </thead>
@@ -37,6 +38,9 @@
                         @else
                         oui
                       @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('emprunts.show',$item->id) }}"class="btn btn-info"></a>
                     </td>
                   </tr>
                      @endforeach

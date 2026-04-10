@@ -40,3 +40,5 @@ Route::get('etudiant/show/{etudiant}',[EtudiantController::class,'show'])->name(
 Route::delete('etudiant/delete/{etudiant}',[EtudiantController::class,'destroy'])->name('etudiant.destroy');
 
 Route::resource('emprunts',EmpruntController::class);
+
+Route::put('emprunt/retour/{emprunt}',[EmpruntController::class,'retourlivre'])->name('retourlivre');

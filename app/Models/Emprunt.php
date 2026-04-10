@@ -8,7 +8,7 @@ class Emprunt extends Model
 {
     protected $fillable=[
         'livre_id',
-        'etudiant_id',
+        'Etudiant_id',
         'date_emprunt',
         'date_retour',
         'rendu'
@@ -18,6 +18,6 @@ class Emprunt extends Model
         return $this->belongsTo(Livre::class, 'livre_id');
     }
      public function etudiant(){
-        return $this->belongsTo(Etudiant::class, 'etudiant_id');
+        return $this->belongsTo(Etudiant::class, 'Etudiant_id');
     }
 }

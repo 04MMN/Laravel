@@ -44,13 +44,9 @@
               <span>Emprunts</span>
               </a>
             <ul class="sub">
-              <li><a href="grids.html">Grids</a></li>
-              <li><a href="calendar.html">Calendar</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="todo_list.html">Todo List</a></li>
-              <li><a href="dropzone.html">Dropzone File Upload</a></li>
-              <li><a href="inline_editor.html">Inline Editor</a></li>
-              <li><a href="file_upload.html">Multiple File Upload</a></li>
+              <li><a href="{{ route('emprunts.index') }}">Liste</a></li>
+              <li><a href="{{ route('emprunts.create') }}">Nouveau</a></li>
+
             </ul>
           </li>
 
