@@ -10,6 +10,8 @@
     @endif
                 <h4><i class="fa fa-angle-right"></i>Liste des emprunts</h4>
                 <hr>
+                    <a href="{{ route('telechargerListe') }}" class="btn btn-sucess">Telecharger liste </a>
+
                 <thead>
                   <tr>
                     <th><i class="fa fa-bullhorn"></i>livre </th>

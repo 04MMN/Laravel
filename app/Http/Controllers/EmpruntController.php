@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Emprunt;
 use App\Models\Livre;
 use App\Models\Etudiant;
@@ -102,5 +102,16 @@ return redirect()->route('emprunts.index')->with('success', 'Emprunt ajouté ave
         $livre->increment('quantite');
         $emprunt->update(['rendu'=>true]);
         return redirect()->route('emprunts.show',$emprunt->id)->with('livre rendu');
+    }
+    public function telechargerListe(){
+        $emprunts=Emprunt::with(['livre','etudiant'])->where('rendu',false)->get();
+
+
+
+    $listepdf = Pdf::loadView('pdf.listeemprunts',compact('emprunts'));
+    return $listepdf->download('liste_des_emprunts.pdf');
+
+        //dd($emprunts);
+
     }
 }

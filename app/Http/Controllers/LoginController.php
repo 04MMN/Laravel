@@ -22,4 +22,10 @@ class LoginController extends Controller
             return back()->withErrors('erreur_auth','Email ou password incorect');
         }
     }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect('/');
+    }
 }

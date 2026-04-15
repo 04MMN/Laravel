@@ -33,7 +33,7 @@
                 </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <div class="task-info">
                     <div class="desc">Database Update</div>
                     <div class="percent">60%</div>
@@ -46,7 +46,7 @@
                 </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <div class="task-info">
                     <div class="desc">Product Development</div>
                     <div class="percent">80%</div>
@@ -59,7 +59,7 @@
                 </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <div class="task-info">
                     <div class="desc">Payments Sent</div>
                     <div class="percent">70%</div>
@@ -89,7 +89,7 @@
                 <p class="green">You have 5 new messages</p>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="photo"><img alt="avatar" src="{{asset('img/ui-zac.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Zac Snider</span>
@@ -101,7 +101,7 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="photo"><img alt="avatar" src="{{asset('img/ui-divya.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Divya Manian</span>
@@ -113,7 +113,7 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="photo"><img alt="avatar" src="{{asset('img/ui-danro.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
@@ -125,7 +125,7 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="photo"><img alt="avatar" src="{{asset('img/ui-sherman.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
@@ -137,7 +137,7 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">See all messages</a>
+                <a href="{{asset('index.html#')}}">See all messages</a>
               </li>
             </ul>
           </li>
@@ -154,35 +154,35 @@
                 <p class="yellow">You have 7 new notifications</p>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="label label-danger"><i class="fa fa-bolt"></i></span>
                   Server Overloaded.
                   <span class="small italic">4 mins.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="label label-warning"><i class="fa fa-bell"></i></span>
                   Memory #2 Not Responding.
                   <span class="small italic">30 mins.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="label label-danger"><i class="fa fa-bolt"></i></span>
                   Disk Space Reached 85%.
                   <span class="small italic">2 hrs.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="{{asset('index.html#')}}">
                   <span class="label label-success"><i class="fa fa-plus"></i></span>
                   New User Registered.
                   <span class="small italic">3 hrs.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">See all notifications</a>
+                <a href="{{asset('index.html#')}}">See all notifications</a>
               </li>
             </ul>
           </li>
@@ -191,8 +191,13 @@
         <!--  notification end -->
       </div>
       <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Logout</a></li>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+
+            <button class="btn bnt-danger" type="submit">Logout</button>
+        </form>
+
+
         </ul>
       </div>
     </header>

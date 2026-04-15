@@ -4,13 +4,23 @@ use App\Http\Controllers\EmpruntController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\livreController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 //Route::get('/', function () {
   //  return view('welcome');
 //});
-Route :: get('/dashboard', function(){
 
-    return view('dashboard');
-});
+
+Route::get('/',[LoginController::class,'login']);
+
+Route::post('/gererlogin',[LoginController::class, 'gererlogin'])->name('gererlogin');
+
+Route::post('/logout',[LoginController::class,'logout'])->name('logout');
+
+
+
+Route::middleware(['auth'])->group(function () {
+
+Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
 
 Route ::get('/livres',[livreController::class,'index'])->name('Listelivre');
 
@@ -44,6 +54,6 @@ Route::resource('emprunts',EmpruntController::class);
 
 Route::put('emprunt/retour/{emprunt}',[EmpruntController::class,'retourlivre'])->name('retourlivre');
 
-Route::get('/',[LoginController::class,'login']);
+Route::get('/telecharger',[EmpruntController::class,'telechargerListe'])->name('telechargerListe');
 
-Route::post('/gererlogin',[LoginController::class, 'gererlogin'])->name('gererlogin');
+});
